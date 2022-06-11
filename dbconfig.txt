@@ -1,0 +1,3 @@
+Database - Mongodb
+Username - admin
+Password - BFqMhWny3RYBUQmA
