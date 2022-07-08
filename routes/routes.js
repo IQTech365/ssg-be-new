@@ -34,6 +34,13 @@ const {
 
 const {createMedia, getAllMedia} = require("../controllers/media.controller");
 
+const {
+  createExternalLink,
+  updateExternalLink,
+  deleteExternalLink,
+  getAllExternalLinks,
+} = require("../controllers/externallink.controller");
+
 router.post("/signin", signIn);
 router.post("/create", createUser);
 router.get("/users", getAllUsers);
@@ -65,5 +72,11 @@ router.get("/categories", getAllCategories);
 //media routes
 router.post("/media/create", createMedia);
 router.get("/media/all", getAllMedia);
+
+//external-link routes
+router.post("/externalLink/create", createExternalLink);
+router.put("/externalLink/update", updateExternalLink);
+router.delete("/externalLink/delete", deleteExternalLink);
+router.get("/externalLinks", getAllExternalLinks);
 
 module.exports = router;
