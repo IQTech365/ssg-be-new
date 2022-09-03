@@ -32,7 +32,7 @@ const {
   getAllCategories,
 } = require("../controllers/category.controller");
 
-const {createMedia, getAllMedia} = require("../controllers/media.controller");
+const { createMedia, getAllMedia } = require("../controllers/media.controller");
 
 const {
   createExternalLink,
@@ -40,6 +40,10 @@ const {
   deleteExternalLink,
   getAllExternalLinks,
 } = require("../controllers/externallink.controller");
+const {
+  createEPaper,
+  getAllEPapers,
+} = require("../controllers/epaper.controller");
 
 router.post("/signin", signIn);
 router.post("/create", createUser);
@@ -78,5 +82,9 @@ router.post("/externalLink/create", createExternalLink);
 router.put("/externalLink/update", updateExternalLink);
 router.delete("/externalLink/delete", deleteExternalLink);
 router.get("/externalLinks", getAllExternalLinks);
+
+// epaper routes
+router.post("/epaper/create", createEPaper);
+router.get("/epapers", getAllEPapers);
 
 module.exports = router;
