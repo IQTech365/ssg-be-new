@@ -44,6 +44,7 @@ const {
   createEPaper,
   getAllEPapers,
 } = require("../controllers/epaper.controller");
+const { getAllUserRequest, saveUserRequest } = require("../controllers/user.request.controller");
 
 router.post("/signin", signIn);
 router.post("/create", createUser);
@@ -86,5 +87,9 @@ router.get("/externalLinks", getAllExternalLinks);
 // epaper routes
 router.post("/epaper/create", createEPaper);
 router.get("/epapers", getAllEPapers);
+
+// user request routes
+router.post("/user/request/save", saveUserRequest);
+router.get("/user/requests", getAllUserRequest);
 
 module.exports = router;
