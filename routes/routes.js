@@ -94,7 +94,7 @@ router.post("/user/request/save", saveUserRequest);
 router.get("/user/requests", getAllUserRequest);
 
 // app user controller routes
-router.get("/user/request/otp", getOtpToRegisterUser);
-router.get("/user/request/verify", verifyOtp);
+router.post("/user/request/otp", getOtpToRegisterUser);
+router.post("/user/request/verify", verifyOtp);
 
 module.exports = router;
