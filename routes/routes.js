@@ -45,6 +45,7 @@ const {
   getAllEPapers,
 } = require("../controllers/epaper.controller");
 const { getAllUserRequest, saveUserRequest } = require("../controllers/user.request.controller");
+const { getOtpToRegisterUser, verifyOtp } = require("../controllers/app.user.controller")
 
 router.post("/signin", signIn);
 router.post("/create", createUser);
@@ -91,5 +92,9 @@ router.get("/epapers", getAllEPapers);
 // user request routes
 router.post("/user/request/save", saveUserRequest);
 router.get("/user/requests", getAllUserRequest);
+
+// app user controller routes
+router.get("/user/request/otp", getOtpToRegisterUser);
+router.get("/user/request/verify", verifyOtp);
 
 module.exports = router;
