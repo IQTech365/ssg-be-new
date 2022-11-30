@@ -54,10 +54,10 @@ router.post("/create", createUser);
 router.get("/users", getAllUsers);
 
 // Event routes
-router.post('event/create' , create)
-router.get('event/all' , list)
-router.put('event/update/:id' , update)
-router.get('event/remove/:id' , remove)
+router.post('/event/create' , create)
+router.get('/event/all' , list)
+router.put('/event/update/:id' , update)
+router.get('/event/remove/:id' , remove)
 
 //langauge routes
 router.post("/language/create", createLanguage);
