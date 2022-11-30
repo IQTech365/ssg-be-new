@@ -34,6 +34,8 @@ const {
 
 const { createMedia, getAllMedia } = require("../controllers/media.controller");
 
+const { create , list , update , remove} = require("../controllers/event.controller")
+
 const {
   createExternalLink,
   updateExternalLink,
@@ -50,6 +52,12 @@ const { getOtpToRegisterUser, verifyOtp } = require("../controllers/app.user.con
 router.post("/signin", signIn);
 router.post("/create", createUser);
 router.get("/users", getAllUsers);
+
+// Event routes
+router.post('event/create' , create)
+router.get('event/all' , list)
+router.put('event/update/:id' , update)
+router.get('event/remove/:id' , remove)
 
 //langauge routes
 router.post("/language/create", createLanguage);
