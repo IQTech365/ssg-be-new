@@ -1,9 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const UserRequestSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
+    user: {
+      type: mongoose.Types.ObjectId,
+      ref: "users",
       required: true,
     },
     mobile: {
@@ -15,9 +16,13 @@ const UserRequestSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    reply: {
+      type: String,
+      default: null,
+    },
   },
   {
     timestamps: true,
   }
 );
-module.exports = mongoose.model('UserRequest', UserRequestSchema);
+module.exports = mongoose.model("UserRequest", UserRequestSchema);

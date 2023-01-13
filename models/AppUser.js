@@ -1,9 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const AppUserSchema = new mongoose.Schema(
   {
     name: {
       type: String,
+      default: null,
     },
     mobile: {
       type: String,
@@ -12,13 +13,15 @@ const AppUserSchema = new mongoose.Schema(
     },
     email: {
       type: String,
+      default: null,
     },
     message: {
       type: String,
+      default: null,
     },
   },
   {
     timestamps: true,
   }
 );
-module.exports = mongoose.model('AppUser', AppUserSchema);
+module.exports = mongoose.model("AppUser", AppUserSchema);

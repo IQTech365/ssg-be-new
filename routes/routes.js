@@ -34,7 +34,12 @@ const {
 
 const { createMedia, getAllMedia } = require("../controllers/media.controller");
 
-const { create , list , update , remove} = require("../controllers/event.controller")
+const {
+  create,
+  list,
+  update,
+  remove,
+} = require("../controllers/event.controller");
 
 const {
   createExternalLink,
@@ -46,18 +51,25 @@ const {
   createEPaper,
   getAllEPapers,
 } = require("../controllers/epaper.controller");
-const { getAllUserRequest, saveUserRequest } = require("../controllers/user.request.controller");
-const { getOtpToRegisterUser, verifyOtp } = require("../controllers/app.user.controller")
+const {
+  getAllUserRequest,
+  saveUserRequest,
+  appendUserRequestReplies,
+} = require("../controllers/user.request.controller");
+const {
+  getOtpToRegisterUser,
+  verifyOtp,
+} = require("../controllers/app.user.controller");
 
 router.post("/signin", signIn);
 router.post("/create", createUser);
 router.get("/users", getAllUsers);
 
 // Event routes
-router.post('/event/create' , create)
-router.get('/event/all' , list)
-router.put('/event/update/:id' , update)
-router.get('/event/remove/:id' , remove)
+router.post("/event/create", create);
+router.get("/event/all", list);
+router.put("/event/update/:id", update);
+router.get("/event/remove/:id", remove);
 
 //langauge routes
 router.post("/language/create", createLanguage);
@@ -104,5 +116,8 @@ router.get("/user/requests", getAllUserRequest);
 // app user controller routes
 router.post("/user/request/otp", getOtpToRegisterUser);
 router.post("/user/request/verify", verifyOtp);
+
+// app user request replies
+router.post("/user/reply/:requestId", appendUserRequestReplies);
 
 module.exports = router;
