@@ -87,10 +87,10 @@ const registerAndLoginAppUser = async (req, res) => {
   }
 };
 
-const getAllUserRequest = async (req, res) => {
+const getAllAppUsers = async (req, res) => {
   try {
-    const userRequests = await UserRequestModel.find({});
-    res.send({ userRequests });
+    const appusers = await AppUserModel.find({});
+    res.send({ appusers });
   } catch (error) {
     if (error.message) {
       res.status(400).json({ error: error.message });
@@ -101,7 +101,7 @@ const getAllUserRequest = async (req, res) => {
 
 module.exports = {
   // saveUserRequest,
-  getAllUserRequest,
+  getAllAppUsers,
   getOtpToRegisterUser,
   registerAndLoginAppUser,
   verifyOtp,

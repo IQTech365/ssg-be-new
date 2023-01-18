@@ -59,6 +59,7 @@ const {
 const {
   getOtpToRegisterUser,
   verifyOtp,
+  getAllAppUsers,
 } = require("../controllers/app.user.controller");
 
 router.post("/signin", signIn);
@@ -116,6 +117,8 @@ router.get("/user/requests", getAllUserRequest);
 // app user controller routes
 router.post("/user/request/otp", getOtpToRegisterUser);
 router.post("/user/request/verify", verifyOtp);
+
+router.get("/appusers", getAllAppUsers);
 
 // app user request replies
 router.post("/user/reply/:requestId", appendUserRequestReplies);
