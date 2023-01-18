@@ -61,6 +61,10 @@ const {
   verifyOtp,
   getAllAppUsers,
 } = require("../controllers/app.user.controller");
+const {
+  getAllMobileUsers,
+  createMobileUser,
+} = require("../controllers/mobile.user.controller");
 
 router.post("/signin", signIn);
 router.post("/create", createUser);
@@ -118,7 +122,9 @@ router.get("/user/requests", getAllUserRequest);
 router.post("/user/request/otp", getOtpToRegisterUser);
 router.post("/user/request/verify", verifyOtp);
 
-router.get("/appusers", getAllAppUsers);
+// Get mobile users
+router.get("/mobileusers", getAllMobileUsers);
+router.post("/mobileusers", createMobileUser);
 
 // app user request replies
 router.post("/user/reply/:requestId", appendUserRequestReplies);
