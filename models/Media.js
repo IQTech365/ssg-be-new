@@ -8,39 +8,43 @@ const MediaSchema = new mongoose.Schema(
     },
     media_language: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Language',
+      ref: "Language",
       required: true,
     },
     media_type: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'MediaType',
+      ref: "MediaType",
       required: true,
     },
     media_sub_type: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'MediaSubType',
+      ref: "MediaSubType",
     },
     media_category: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Category',
+      ref: "Category",
       required: true,
     },
     media_title: {
       type: String,
       required: true,
     },
+    video_thumbnail: {
+      type: String,
+      default: null,
+    },
     video_media_url: {
       type: String,
-      required: false
+      required: false,
     },
     video_show_on_top: {
       type: Boolean,
-      required:false,
+      required: false,
     },
     author: {
       type: String,
       required: true,
-    }
+    },
   },
   {
     timestamps: true,

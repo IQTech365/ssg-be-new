@@ -12,11 +12,13 @@ const createMedia = async (req, res) => {
       media_title,
       video_media_url,
       video_show_on_top,
+      video_thumbnail,
     } = req.body;
     const model = new MediaModel({
       media_type,
       media_sub_type,
       media_url,
+      video_thumbnail,
       media_language: language,
       media_category,
       media_title,
