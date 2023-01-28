@@ -5,7 +5,6 @@ const UserRequestSchema = new mongoose.Schema(
     user: {
       type: mongoose.Types.ObjectId,
       ref: "users",
-      required: true,
     },
     mobile: {
       type: String,
