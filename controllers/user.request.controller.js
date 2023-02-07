@@ -15,11 +15,7 @@ const saveUserRequest = async (req, res) => {
       status: 200,
     });
   } catch (error) {
-    if (error.code == 11000) {
-      return res.status(401).json({
-        error: "Phone number already exists, please use another number.",
-      });
-    } else if (error.message) {
+    if (error.message) {
       return res.status(400).json({ error: error.message });
     } else {
       return res.status(400).json({ error: "Error occured" });

@@ -9,7 +9,6 @@ const UserRequestSchema = new mongoose.Schema(
     mobile: {
       type: String,
       required: true,
-      unique: true,
     },
     message: {
       type: String,
