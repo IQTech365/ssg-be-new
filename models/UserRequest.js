@@ -6,6 +6,10 @@ const UserRequestSchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: "users",
     },
+    name: {
+      type: String,
+      default: null,
+    },
     mobile: {
       type: String,
       required: true,

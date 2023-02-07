@@ -2,7 +2,6 @@ const UserRequestModel = require("../models/UserRequest");
 
 const saveUserRequest = async (req, res) => {
   try {
-    console.log(req.body);
     const { name, mobile, message } = req.body;
     const model = new UserRequestModel({
       name,
@@ -16,7 +15,6 @@ const saveUserRequest = async (req, res) => {
       status: 200,
     });
   } catch (error) {
-    console.log(error);
     if (error.message) {
       return res.status(400).json({ error: error.message });
     } else {
