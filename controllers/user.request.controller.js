@@ -37,16 +37,19 @@ const getAllUserRequest = async (req, res) => {
 const appendUserRequestReplies = async (req, res) => {
   try {
     const { requestId } = req.params;
-    const instance = await UserRequestModel.updateOne({
-      _id: requestId,
-      reply: req.body.message,
-    });
+    const instance = await UserRequestModel.updateOne(
+      { _id: requestId },
+      {
+        reply: req.body.message,
+      }
+    );
     if (instance.modifiedCount) {
       res.sendStatus(200);
     } else {
       res.status(404).json({ error: "not found" });
     }
   } catch (error) {
+    console.log(error);
     if (error.message) {
       res.status(400).json({ error: error.message });
     }

@@ -32,7 +32,11 @@ const {
   getAllCategories,
 } = require("../controllers/category.controller");
 
-const { createMedia, getAllMedia } = require("../controllers/media.controller");
+const {
+  createMedia,
+  getAllMedia,
+  deleteMedia,
+} = require("../controllers/media.controller");
 
 const {
   create,
@@ -103,6 +107,7 @@ router.get("/categories", getAllCategories);
 //media routes
 router.post("/media/create", createMedia);
 router.get("/media/all", getAllMedia);
+router.delete("/media/delete/:mediaId", deleteMedia);
 
 //external-link routes
 router.post("/externalLink/create", createExternalLink);

@@ -56,7 +56,25 @@ const getAllMedia = async (req, res) => {
   }
 };
 
+const deleteMedia = async (req, res) => {
+  try {
+    const { mediaId } = req.params;
+    const instance = await MediaModel.deleteOne({ _id: mediaId });
+    if (instance.deletedCount) {
+      res.sendStatus(200);
+    } else {
+      res.status(404).json({ error: "not found" });
+    }
+  } catch (error) {
+    if (error.message) {
+      res.status(400).json({ error: error.message });
+    }
+    res.status(400).json({ error: "error" });
+  }
+};
+
 module.exports = {
   createMedia,
   getAllMedia,
+  deleteMedia,
 };
