@@ -5,7 +5,7 @@ const createMobileUser = async (req, res) => {
     const { name, email, mobile } = req.body;
     const user = new MobileUserModel({ name, email, mobile });
     const doc = await user.save();
-    res.send({ email: doc.email });
+    res.send({ message: "Mobile user created successfully" });
   } catch (error) {
     if (error.message) {
       res.status(400).json({ error: error.message });

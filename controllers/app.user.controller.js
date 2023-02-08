@@ -90,7 +90,7 @@ const registerAndLoginAppUser = async (req, res) => {
 const getAllAppUsers = async (req, res) => {
   try {
     const appusers = await AppUserModel.find({});
-    res.send({ appusers });
+    res.send(appusers);
   } catch (error) {
     if (error.message) {
       res.status(400).json({ error: error.message });

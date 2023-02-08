@@ -78,7 +78,7 @@ router.get("/users", getAllUsers);
 router.post("/event/create", create);
 router.get("/event/all", list);
 router.put("/event/update/:id", update);
-router.get("/event/remove/:id", remove);
+router.delete("/event/delete/:id", remove);
 
 //langauge routes
 router.post("/language/create", createLanguage);
@@ -128,7 +128,8 @@ router.post("/user/request/otp", getOtpToRegisterUser);
 router.post("/user/request/verify", verifyOtp);
 
 // Get mobile users
-router.get("/mobileusers", getAllMobileUsers);
+router.get("/mobileusers", getAllAppUsers);
+// router.get("/mobileusers", getAllMobileUsers);
 router.post("/mobileusers", createMobileUser);
 
 // app user request replies
