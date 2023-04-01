@@ -8,14 +8,16 @@ const saveUserRequest = async (req, res) => {
       mobile,
       message,
     });
-    const doc = await model.findOneAndUpdate({mobile: mobile}, {reply: message}, {
-      new: true,
-      upsert: true,
-      rawResult: true
-    });
-    console.log('doc-received---', JSON.stringify(doc));
+    let result;
+    const count = await model.countDocuments({mobile: mobile});
+    if(count > 0){
+      result = await model.updateOne({mobile: mobile}, {reply: message});
+    } else {
+      result = await model.save({mobile: mobile, name: name, message: message});
+    }
+    console.log('doc-received---', JSON.stringify(result));
     res.send({
-      data: doc,
+      data: result,
       message: "Request saved successfully",
       status: 200,
     });
