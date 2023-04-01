@@ -1,18 +1,18 @@
 const UserModel = require("../models/User");
 
-const signIn = (req, res) => {
+const signIn = async (req, res) => {
   const { email, password } = req.body;
-  console.log('req.body--', req.body);
-  UserModel.findOne(
-    { email: email, password: password },
-    function (error, user) {
-      if (error) {
-        res.status(400).json({ error: error.message });
-      } else {
-        res.send({ data: user, status: 200 });
-      }
+  try {
+    const result = await UserModel.findOne({ email: email, password: password });
+    if(result){
+      return res.send({ data: result, status: 200 });
+    } else {
+      return res.status(403).json({error: 'username/password incorrect'});
     }
-  );
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+
 };
 
 const createUser = async (req, res) => {
