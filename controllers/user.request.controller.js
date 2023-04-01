@@ -13,12 +13,14 @@ const saveUserRequest = async (req, res) => {
       upsert: true,
       rawResult: true
     });
+    console.log('doc-received---', JSON.stringify(doc));
     res.send({
       data: doc,
       message: "Request saved successfully",
       status: 200,
     });
   } catch (error) {
+    console.log('error-in-request---', JSON.stringify(error));
     if (error.message) {
       return res.status(400).json({ error: error.message });
     } else {
