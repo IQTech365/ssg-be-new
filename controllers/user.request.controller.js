@@ -10,7 +10,8 @@ const saveUserRequest = async (req, res) => {
     });
     const doc = await model.findOneAndUpdate({mobile: mobile}, {reply: message}, {
       new: true,
-      upsert: true
+      upsert: true,
+      rawResult: true
     });
     res.send({
       data: doc,
