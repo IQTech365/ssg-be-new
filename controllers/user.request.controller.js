@@ -8,7 +8,7 @@ const saveUserRequest = async (req, res) => {
       mobile,
       message,
     });
-    const doc = await model.save();
+    const doc = await model.findOneAndUpdate({mobile: mobile}, {reply: message});
     res.send({
       data: doc,
       message: "Request saved successfully",
