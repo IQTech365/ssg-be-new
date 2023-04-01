@@ -22,7 +22,7 @@ const saveUserRequest = async (req, res) => {
       status: 200,
     });
   } catch (error) {
-    console.log('error-in-request---', JSON.stringify(error));
+    console.log('error-in-request---', error?.message);
     if (error.message) {
       return res.status(400).json({ error: error.message });
     } else {
