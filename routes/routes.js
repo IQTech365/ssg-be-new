@@ -69,6 +69,7 @@ const {
   getAllMobileUsers,
   createMobileUser,
 } = require("../controllers/mobile.user.controller");
+const { getBanners, createBanner } = require("../controllers/homeBanner.controller");
 
 router.post("/signin", signIn);
 router.post("/create", createUser);
@@ -134,5 +135,9 @@ router.post("/mobileusers", createMobileUser);
 
 // app user request replies
 router.post("/user/reply/:requestId", appendUserRequestReplies);
+
+// Home Banners
+router.get("/banners", getBanners);
+router.post("/create-banner", createBanner);
 
 module.exports = router;
