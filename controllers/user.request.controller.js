@@ -16,7 +16,7 @@ const saveUserRequest = async (req, res) => {
       result = await model.save({mobile: mobile, name: name, message: message});
     }
     console.log('doc-received---', JSON.stringify(result));
-    res.send({
+    return res.send({
       data: result,
       message: "Request saved successfully",
       status: 200,
