@@ -9,11 +9,11 @@ const saveUserRequest = async (req, res) => {
       message,
     });
     let result;
-    const count = await UserRequestModel.countDocuments({mobile: mobile});
-    if(count > 0){
-      result = await UserRequestModel.updateOne({mobile: mobile}, {message: message});
+    const count = await UserRequestModel.countDocuments({ mobile: mobile });
+    if (count > 0) {
+      result = await UserRequestModel.updateOne({ mobile: mobile }, { message: message });
     } else {
-      result = await model.save({mobile: mobile, name: name, message: message});
+      result = await model.save({ mobile: mobile, name: name, message: message });
     }
     return res.send({
       data: result,

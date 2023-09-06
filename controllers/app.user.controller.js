@@ -2,6 +2,8 @@ const AppUserModel = require("../models/AppUser");
 const otpGenerator = require("otp-generator");
 const Otp = require("../models/Otp");
 const axios = require("axios").default;
+const admin = require("firebase-admin");
+const User = require("../models/User");
 
 const KUTILITY_API_KEY = "462C2859390A37";
 const CAMPAIGN_ID = 13439;
@@ -99,10 +101,55 @@ const getAllAppUsers = async (req, res) => {
   }
 };
 
+const editAppUser = async (req, res) => {
+  console.log(req.params, req.body, 'data..');
+  const { mobile } = req.params;
+  const { email, name } = req.body;
+
+  try {
+    // Find the user by mobile number and update email and name
+    const updatedUser = await AppUserModel.findOneAndUpdate(
+      { mobile: mobile },
+      { email: email, name: name },
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.json(updatedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+
+};
+
+
+const sendPushNotification = async (req, res) => {
+  const { deviceToken, title, body } = req.body;
+  const message = {
+    notification: {
+      title,
+      body
+    },
+    token: deviceToken
+  };
+  try {
+    const response = await admin.messaging().send(message);
+    res.status(200).json({ message: "Push notification sent successfully." });
+  } catch (error) {
+    res.status(500).json({ error: "An error occurred while sending push notification." });
+  }
+}
+
 module.exports = {
   // saveUserRequest,
   getAllAppUsers,
   getOtpToRegisterUser,
   registerAndLoginAppUser,
   verifyOtp,
+  sendPushNotification,
+  editAppUser,
 };

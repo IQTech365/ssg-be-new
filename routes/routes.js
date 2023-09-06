@@ -64,12 +64,16 @@ const {
   getOtpToRegisterUser,
   verifyOtp,
   getAllAppUsers,
+  editAppUser,
+  sendPushNotification,
 } = require("../controllers/app.user.controller");
 const {
   getAllMobileUsers,
   createMobileUser,
 } = require("../controllers/mobile.user.controller");
 const { getBanners, createBanner } = require("../controllers/homeBanner.controller");
+
+const { createNotificationToken, getAllNotificationToken } = require("../controllers/pushNotificationToken.controller");
 
 router.post("/signin", signIn);
 router.post("/create", createUser);
@@ -127,11 +131,14 @@ router.get("/user/requests", getAllUserRequest);
 // app user controller routes
 router.post("/user/request/otp", getOtpToRegisterUser);
 router.post("/user/request/verify", verifyOtp);
+router.post("/user/request/sendpush", sendPushNotification);
+
 
 // Get mobile users
 router.get("/mobileusers", getAllAppUsers);
 // router.get("/mobileusers", getAllMobileUsers);
 router.post("/mobileusers", createMobileUser);
+router.put("/mobileusers/:mobile", editAppUser);
 
 // app user request replies
 router.post("/user/reply/:requestId", appendUserRequestReplies);
@@ -140,4 +147,7 @@ router.post("/user/reply/:requestId", appendUserRequestReplies);
 router.get("/banners", getBanners);
 router.post("/create-banner", createBanner);
 
+// push notification token
+router.post("/notification-token/create", createNotificationToken);
+router.get("/notification-token", getAllNotificationToken);
 module.exports = router;
