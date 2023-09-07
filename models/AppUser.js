@@ -5,6 +5,8 @@ const AppUserSchema = new mongoose.Schema(
     name: {
       type: String,
       default: null,
+      required: true,
+      unique: true,
     },
     mobile: {
       type: String,
@@ -14,6 +16,8 @@ const AppUserSchema = new mongoose.Schema(
     email: {
       type: String,
       default: null,
+      required: true,
+      unique: true,
     },
     message: {
       type: String,

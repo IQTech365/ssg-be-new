@@ -4,6 +4,8 @@ const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const routes = require("./routes/routes");
+const admin = require("firebase-admin");
+const serviceAccount = require("./config/saigyaneshwari-eb4b7-firebase-adminsdk-ljwex-9268902b0d.json");
 
 //Middlewares
 app.use(cors({ origin: "*" }));
@@ -30,6 +32,10 @@ mongoose
   .catch((err) => {
     console.log(`erroe in connecting to database - ${err}`);
   });
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
 
 //INIT Server
 app.listen(port, () => {
