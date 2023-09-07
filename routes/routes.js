@@ -73,7 +73,7 @@ const {
 } = require("../controllers/mobile.user.controller");
 const { getBanners, createBanner } = require("../controllers/homeBanner.controller");
 
-const { createNotificationToken, getAllNotificationToken } = require("../controllers/pushNotificationToken.controller");
+const { createNotificationToken, getAllNotificationToken, deleteAllNotificationToken } = require("../controllers/pushNotificationToken.controller");
 
 router.post("/signin", signIn);
 router.post("/create", createUser);
@@ -150,4 +150,5 @@ router.post("/create-banner", createBanner);
 // push notification token
 router.post("/notification-token/create", createNotificationToken);
 router.get("/notification-token", getAllNotificationToken);
+router.delete("/delete-notification-token", deleteAllNotificationToken);
 module.exports = router;
