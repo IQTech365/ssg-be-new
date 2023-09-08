@@ -65,6 +65,7 @@ const {
   verifyOtp,
   getAllAppUsers,
   editAppUser,
+  getAppUser,
   sendPushNotification,
 } = require("../controllers/app.user.controller");
 const {
@@ -139,6 +140,7 @@ router.get("/mobileusers", getAllAppUsers);
 // router.get("/mobileusers", getAllMobileUsers);
 router.post("/mobileusers", createMobileUser);
 router.put("/mobileusers/:mobile", editAppUser);
+router.get("/mobileuser/:mobile", getAppUser);
 
 // app user request replies
 router.post("/user/reply/:requestId", appendUserRequestReplies);
