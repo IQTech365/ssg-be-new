@@ -126,6 +126,26 @@ const editAppUser = async (req, res) => {
 
 };
 
+const getAppUser = async (req, res) => {
+  const { mobile } = req.params;
+
+  try {
+    const getUser = await AppUserModel.findOne(
+      { mobile: mobile }
+    );
+
+    if (!getUser) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.json(getUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+
+};
+
 
 const sendPushNotification = async (req, res) => {
   const { deviceToken, title, body } = req.body;
@@ -152,4 +172,5 @@ module.exports = {
   verifyOtp,
   sendPushNotification,
   editAppUser,
+  getAppUser,
 };
