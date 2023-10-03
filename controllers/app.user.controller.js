@@ -27,7 +27,7 @@ const getOtpToRegisterUser = async (req, res) => {
     });
     const savedOtp = await otp.save();
     const msg = `Dear ,OTP-${otpCode} is your One Time Password to complete your registration process. This OTP will expire in 30 minutes. SAITRU`;
-    const URL = `http://kutility.org/app/smsapi/index.php?key=${KUTILITY_API_KEY}&campaign=${CAMPAIGN_ID}&routeid=${ROUTE_ID}&type=${TYPE}&contacts=${mobile}&senderid=${SENDER_ID}&msg=${msg}&template_id=${TEMPLATE_ID}&pe_id=${PE_ID}`;
+    const URL = `https://kutility.org/app/smsapi/index.php?key=${KUTILITY_API_KEY}&campaign=${CAMPAIGN_ID}&routeid=${ROUTE_ID}&type=${TYPE}&contacts=${mobile}&senderid=${SENDER_ID}&msg=${msg}&template_id=${TEMPLATE_ID}&pe_id=${PE_ID}`;
 
     const response = await axios.get(URL).catch((error) => {
       res.send({
