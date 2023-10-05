@@ -4,6 +4,7 @@ const admin = require("firebase-admin");
 const createNotificationToken = async (req, res) => {
     try {
         const { token, mobile } = req.body;
+        console.log(token, mobile, 'sample..');
         const data = await PushNotificationTokenModel.find({});
 
         if (data.length === 0) {
@@ -21,9 +22,9 @@ const createNotificationToken = async (req, res) => {
             }
 
             if (!isIdentical) {
-                const notificationToken = new PushNotificationTokenModel({ token });
+                const notificationToken = new PushNotificationTokenModel({ token, mobile });
                 const doc = await notificationToken.save();
-                res.status(200).send({ token: doc.token });
+                res.status(200).send({ token: doc.token, mobile: doc.mobile });
             } else {
                 res.status(400).json({ error: "Identical token" });
             }
